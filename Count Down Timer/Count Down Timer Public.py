@@ -3,7 +3,9 @@ from dateutil.relativedelta import relativedelta
 import pytz
 
 # Parse the start datetime string into a datetime object
-start_datetime_str = "05-13-24 9:00 AM"
+
+# input service time for example "05-13-24 9:00 AM"
+start_datetime_str = input("Enter your start date and time (mm-dd-yy hh:mm AM/PM): ")
 start_datetime = datetime.strptime(start_datetime_str, "%m-%d-%y %I:%M %p")
 
 # Get today's date and time
@@ -14,7 +16,11 @@ pst_timezone = pytz.timezone("America/Los_Angeles")
 start_datetime_pst = pst_timezone.localize(start_datetime)
 
 # Add the number of months to complete from the start datetime
-future_datetime = start_datetime_pst + relativedelta(months=+24)
+
+# enter how many months you want to be here for example "12"
+end_of_service = input("Enter how many months you want to provide: ")
+
+future_datetime = start_datetime_pst + relativedelta(months=+{end_of_service})
 
 # Calculate the difference between start and future datetime
 time_difference = future_datetime.date() - start_datetime_pst.date()
